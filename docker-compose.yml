@@ -10,6 +10,8 @@ worker:
   environment:
     DOCKER: 'true'
     REDIS_URL: redis://redis:6379/1
+    DB_HOST: db
+    DB_PORT: 5432
     RACK_ENV: development
   build: .
   dockerfile: Dockerfile
@@ -24,6 +26,8 @@ web:
     DOCKER: 'true'
     REDIS_URL: redis://redis:6379/1
     RACK_ENV: development
+    DB_HOST: db
+    DB_PORT: 5432
   build: .
   dockerfile: Dockerfile
   command: bundle exec rackup -p 5000 -o '0.0.0.0' # thin -C config/thin.yml start
