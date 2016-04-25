@@ -9,6 +9,7 @@ gem 'yajl-ruby', require: 'yajl'
 gem 'sidekiq', '~> 4.0'
 gem 'sinatra-activerecord', '~> 2.0'
 gem 'pg'
+gem 'redis'
 
 group :development, :test do
   gem "pry"

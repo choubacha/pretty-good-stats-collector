@@ -89,6 +89,7 @@ DEPENDENCIES
   pg
   pry
   rack-test
+  redis
   rspec
   sidekiq (~> 4.0)
   sinatra (~> 1.4.0)

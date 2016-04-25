@@ -1,4 +1,4 @@
 require "./lib/pgsc"
+require "sidekiq/web"
 
-puts "hello"
-run Pgsc::App
+run Rack::URLMap.new('/' => Pgsc::App, '/sidekiq' => Sidekiq::Web)
