@@ -1,0 +1,36 @@
+db:
+  image: postgres:9.4
+  volumes:
+    - ./tmp/pgdata:/var/lib/postgresql/data/pgdata
+  environment:
+    PGDATA: /var/lib/postgresql/data/pgdata
+redis:
+  image: redis:2.8
+worker:
+  environment:
+    DOCKER: 'true'
+    REDIS_URL: redis://redis:6379/1
+    RACK_ENV: development
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec sidekiq -r /myapp/lib/pgsc.rb -C config/sidekiq.yml
+  volumes:
+    - .:/myapp
+  links:
+    - db
+    - redis
+web:
+  environment:
+    DOCKER: 'true'
+    REDIS_URL: redis://redis:6379/1
+    RACK_ENV: development
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec rackup -p 5000 -o '0.0.0.0' # thin -C config/thin.yml start
+  volumes:
+    - .:/myapp
+  ports:
+    - "5000:5000"
+  links:
+    - db
+    - redis
