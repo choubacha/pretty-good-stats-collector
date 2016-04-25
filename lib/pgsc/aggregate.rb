@@ -30,7 +30,7 @@ module Pgsc
     private
 
     def calc_median(array)
-      (array[(array.length - 1) / 2] - array[array.length / 2]) / 2.0
+      (array[(array.length - 1) / 2] + array[array.length / 2]) / 2.0
     end
   end
 end
