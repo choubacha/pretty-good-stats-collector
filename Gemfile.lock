@@ -38,6 +38,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (11.1.2)
     redis (3.3.0)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -89,6 +90,7 @@ DEPENDENCIES
   pg
   pry
   rack-test
+  rake
   redis
   rspec
   sidekiq (~> 4.0)
