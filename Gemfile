@@ -11,6 +11,7 @@ gem 'sinatra-activerecord', '~> 2.0'
 gem 'pg'
 gem 'redis'
 gem 'rake'
+gem 'foreman'
 
 group :development, :test do
   gem "pry"
