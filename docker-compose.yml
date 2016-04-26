@@ -30,7 +30,7 @@ web:
     DB_PORT: 5432
   build: .
   dockerfile: Dockerfile
-  command: bundle exec rackup -p 5000 -o '0.0.0.0' # thin -C config/thin.yml start
+  command: bundle exec thin -r /myapp/lib/pgsc.rb -C config/thin.yml start
   volumes:
     - .:/myapp
   ports:

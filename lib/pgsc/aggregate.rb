@@ -11,6 +11,7 @@ module Pgsc
         measurement = metric.measurements
                             .where(epoch_minute: epoch)
                             .first_or_initialize
+        return if measurement.count == Redis.client.llen(key)
         data = Redis.client.lrange(key, 0, -1).map(&:to_f).sort
         return if data.empty?
         sum = data.sum
